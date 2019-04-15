@@ -15,7 +15,7 @@
 
         <!-- 拉取表信息的数据库链接URL、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/watermeter"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/supermarket"
                         userId="root"
                         password="root">
         </jdbcConnection>
@@ -33,23 +33,23 @@
         也可以使用“MAVEN”来自动生成，这样生成的代码会在target/generatord-source目录下
         -->
         <!--<javaModelGenerator targetPackage="com.joey.mybaties.test.pojo" targetProject="MAVEN">-->
-        <javaModelGenerator targetPackage="com.watermeter.base.model.core" targetProject="./src/main/java">
+        <javaModelGenerator targetPackage="com.distribute.demo.model" targetProject="./src/main/java">
             <property name="enableSubPackages" value="true"/>
             <!-- 从数据库返回的值被清理前后的空格  -->
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!--对应的mapper.xml文件  -->
-        <sqlMapGenerator targetPackage="core" targetProject="./src/main/resources/mapper/watermeter">
+        <sqlMapGenerator targetPackage="mapper" targetProject="./src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- 对应的Mapper接口类文件 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.watermeter.base.mapper.core" targetProject="./src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.distribute.demo.mapper" targetProject="./src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
 
-        <table tableName="cm_operation_log" domainObjectName="OperationLog" />
+        <table tableName="am_goods" domainObjectName="Goods" />
     </context>
 </generatorConfiguration>

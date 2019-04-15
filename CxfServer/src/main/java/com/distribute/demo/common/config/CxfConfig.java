@@ -1,6 +1,8 @@
 package com.distribute.demo.common.config;
 
 import javax.xml.ws.Endpoint;
+
+import com.distribute.demo.webService.GoodsService;
 import com.distribute.demo.webService.TestService;
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;
@@ -22,11 +24,11 @@ public class CxfConfig {
     @Autowired
     private Bus bus;
     @Autowired
-    private TestService testService;
+    private GoodsService goodsService;
 
     @Bean
     public Endpoint endpoint() {
-        EndpointImpl endpoint = new EndpointImpl(bus, testService);
+        EndpointImpl endpoint = new EndpointImpl(bus, goodsService);
         endpoint.publish("/cxfServices");
         return endpoint;
     }

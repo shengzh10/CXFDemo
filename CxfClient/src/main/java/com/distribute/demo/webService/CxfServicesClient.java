@@ -17,7 +17,7 @@ public class CxfServicesClient {
     public void test1() {
         try {
             // 接口地址
-            String address = "http://localhost:8081/cxf/cxfServices?wsdl";
+            String address = "http://120.78.133.4:8081/cxf/cxfServices?wsdl";
             // 代理工厂
             JaxWsProxyFactoryBean jaxWsProxyFactoryBean = new JaxWsProxyFactoryBean();
             // 设置代理地址
@@ -39,7 +39,7 @@ public class CxfServicesClient {
     public void test2() {
         // 创建动态客户端
         JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();
-        String address = "http://localhost:8081/cxf/cxfServices?wsdl";
+        String address = "http://120.78.133.4:8081/cxf/cxfServices?wsdl";
         Client client = dcf.createClient(address);
         // 需要密码的情况需要加上用户名和密码
         // client.getOutInterceptors().add(new ClientLoginInterceptor(USER_NAME,
