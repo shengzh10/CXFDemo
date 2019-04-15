@@ -27,7 +27,7 @@ public class CxfConfig {
     @Bean
     public Endpoint endpoint() {
         EndpointImpl endpoint = new EndpointImpl(bus, testService);
-        endpoint.publish("/cfxServices");
+        endpoint.publish("/cxfServices");
         return endpoint;
     }
 

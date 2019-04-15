@@ -1,0 +1,22 @@
+server:
+  port: 8082
+
+spring:
+  # Data Source
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  #thymeleaf
+  thymeleaf:
+    cache: false
+    mode: HTML5
+
+# Mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.distribute.demo.model
+
+#debug: true
+
