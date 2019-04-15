@@ -34,6 +34,13 @@ public class GoodsApi {
         return "Goods";
     }
 
+    /**
+     * @Description 出货
+     * @param model 商品数量
+     * @param num 出货数量
+     * @author szh
+     * @Date 2019/4/15 22:43
+     */
     @PostMapping("purchase")
     public String purchase(Model model, @RequestParam("num") int num) {
         int goodsNum =  goodsService.purchaseGoods(num);
@@ -41,6 +48,13 @@ public class GoodsApi {
         return "Goods";
     }
 
+    /**
+     * @Description 进货
+     * @param model 商品数量
+     * @param num 进货数量
+     * @author szh
+     * @Date 2019/4/15 22:43
+     */
     @PostMapping("sale")
     public String sale(Model model, @RequestParam("num") int num) {
         int goodsNum =  goodsService.saleGoods(num);

@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class CxfServicesClient {
-    
+
+    private static final String IP_LOCAL = "http://localhost:8081";
+    private static final String IP_ALI = "http://120.78.133.4:8081";
     private static Client cxfClient;
     
     /**
@@ -25,7 +27,7 @@ public class CxfServicesClient {
     public static Client getClient() {
         if (null == cxfClient) {
             JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();
-            String address = "http://localhost:8081/cxf/cxfServices?wsdl";
+            String address = IP_ALI + "/cxf/cxfServices?wsdl";
             cxfClient = dcf.createClient(address);
         }
         return cxfClient;
