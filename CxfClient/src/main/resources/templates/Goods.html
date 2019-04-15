@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .box{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -100px 0 0 -100px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #000;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>
+            商品数量：<span th:text="${goodsNum}"></span>
+        </div>
+        <br/>
+        <form action="/goods/purchase" method="post">
+            进货数量：<input type="number" name="num" min="1"/>
+            <input type="submit" value="进货"/>
+        </form>
+        <br/>
+        <form action="/goods/sale" method="post">
+            出货数量：<input type="number" name="num" min="1"/>
+            <input type="submit" value="出货"/>
+        </form>
+    </div>
+</body>
+</html>

@@ -8,12 +8,52 @@ import org.springframework.stereotype.Service;
 /**
  * @author szh
  * @ClassName CxfServicesClient
- * @Description
+ * @Description web service客户端
  * @Date 2019/4/15 10:20
  **/
 @Service
 public class CxfServicesClient {
+    
+    private static Client cxfClient;
+    
+    /**
+     * @Description 获取客户端
+     * @return 客户端
+     * @author szh
+     * @Date 2019/4/15 16:36       
+     */
+    public static Client getClient() {
+        if (null == cxfClient) {
+            JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();
+            String address = "http://localhost:8081/cxf/cxfServices?wsdl";
+            cxfClient = dcf.createClient(address);
+        }
+        return cxfClient;
+    }
 
+    /**
+     * @Description 调用服务
+     * @param serviceName 服务名称
+     * @param params
+     * @return
+     * @author szh
+     * @Date 2019/4/15 16:40
+     */
+    public Object[] callService(String serviceName, Object... params) {
+        getClient();
+        try {
+            return cxfClient.invoke(serviceName, params);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * @Description 测试：静态访问服务
+     * @author szh
+     * @Date 2019/4/15 16:33       
+     */
     public void test1() {
         try {
             // 接口地址
@@ -36,6 +76,11 @@ public class CxfServicesClient {
         }
     }
 
+    /**
+     * @Description 测试：动态创建客户端访问服务
+     * @author szh
+     * @Date 2019/4/15 16:34       
+     */
     public void test2() {
         // 创建动态客户端
         JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();
